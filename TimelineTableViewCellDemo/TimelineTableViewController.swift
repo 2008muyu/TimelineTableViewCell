@@ -85,8 +85,11 @@ class TimelineTableViewController: UITableViewController {
         cell.timeline.frontColor = timelineFrontColor
         cell.timeline.backColor = timelineBackColor
         cell.titleLabel.text = title
+        cell.descriptionTitleLabel.text = "标记为联系"
         cell.descriptionLabel.text = description
         cell.lineInfoLabel.text = lineInfo
+        cell.customEventButton.setImage(UIImage.init(named: "Moon"), for: .normal)
+        cell.customEventButton.addTarget(self, action: #selector(test), for: .touchUpInside)
         
         if let thumbnails = thumbnails {
             cell.viewsInStackView = thumbnails.map { thumbnail in
@@ -113,6 +116,10 @@ class TimelineTableViewController: UITableViewController {
         }
         
         print(sectionData[indexPath.row])
+    }
+    
+    @objc func test() -> Void {
+        print("test")
     }
 
     /*
