@@ -85,7 +85,7 @@ class TimelineTableViewController: UITableViewController {
         cell.timeline.frontColor = timelineFrontColor
         cell.timeline.backColor = timelineBackColor
         cell.titleLabel.text = title
-        cell.descriptionTitleLabel.text = "标记为联系"
+        cell.descriptionTitleLabel.text = "description"
         cell.descriptionLabel.text = description
         cell.lineInfoLabel.text = lineInfo
         cell.customEventButton.setImage(UIImage.init(named: "Moon"), for: .normal)
@@ -106,6 +106,9 @@ class TimelineTableViewController: UITableViewController {
         else {
             cell.illustrationImageView.image = nil
         }
+        
+        cell.delegate = self
+        cell.actions = actionsForCell(cell, indexPath: indexPath)
    
         return cell
     }
@@ -122,49 +125,51 @@ class TimelineTableViewController: UITableViewController {
         print("test")
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+}
+
+extension TimelineTableViewController : SwipeableTableViewCellDelegate {
+    fileprivate func actionsForCell(_ cell: TimelineTableViewCell, indexPath: IndexPath) -> [SwipeableCellAction]? {
+        let delete = NSAttributedString(string: "删除", attributes: [.foregroundColor: UIColor.white])
+        
+        var deleteAction = SwipeableCellAction(title: nil, image: UIImage.init(named: "Moon"), backgroundColor: .clear) {
+            let message = indexPath.row % 7 == 5 ? "Did click “\(delete.string)” on custom cell" : "Did click “\(delete.string)” on cell \(indexPath.row)"
+            self.showAlert(message, dismissHandler: {
+                cell.hideActions(animated: true)
+            })
+        }
+        
+        let more = NSAttributedString(string: "更多", attributes: [.foregroundColor: UIColor.white])
+        var moreAction = SwipeableCellAction(title: nil, image: UIImage.init(named: "Sun"), backgroundColor: .clear) {
+            let message = indexPath.row % 7 == 5 ? "Did click “\(more.string)” on custom cell" : "Did click “\(more.string)” on cell \(indexPath.row)"
+            self.showAlert(message, dismissHandler: {
+                cell.hideActions(animated: true)
+            })
+        }
+        
+        moreAction.width = 60
+        deleteAction.width = 60
+        moreAction.iconWidth = 30
+        deleteAction.iconWidth = 30
+        return [deleteAction, moreAction]
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    fileprivate func showAlert(_ message: String, dismissHandler: @escaping () -> ()) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { _ in
+            dismissHandler()
+        }
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    func swipeableCell(_ cell: TimelineTableViewCell, isScrollingToState state: SwipeableCellState) {
+        let cellState = state == .closed ? "closing" : "opening"
+//        let cellName = (cell.textLabel?.text)!
+        print("is \(cellState)...")
     }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    func swipeableCellDidEndScroll(_ cell: TimelineTableViewCell) {
+//        let cellName = (cell.textLabel?.text)!
+        print("did end scroll!")
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
