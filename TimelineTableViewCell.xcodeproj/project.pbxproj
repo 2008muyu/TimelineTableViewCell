@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4CCB40A4242DD2C500BE1CFF /* SwipeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB40A3242DD2C500BE1CFF /* SwipeTypes.swift */; };
 		4CCB40A6242DD72200BE1CFF /* SwipeableCellActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB40A5242DD72200BE1CFF /* SwipeableCellActionsView.swift */; };
 		83D3611722EF001400A105BD /* TimelineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D3611622EF001400A105BD /* TimelineTableViewCell.xib */; };
 		AAC0498E1DB88F0A003FEC67 /* TimelineTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC0498C1DB88F0A003FEC67 /* TimelineTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,7 +36,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4CCB40A3242DD2C500BE1CFF /* SwipeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTypes.swift; sourceTree = "<group>"; };
 		4CCB40A5242DD72200BE1CFF /* SwipeableCellActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableCellActionsView.swift; sourceTree = "<group>"; };
 		83D3611622EF001400A105BD /* TimelineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineTableViewCell.xib; sourceTree = "<group>"; };
 		AAC049891DB88F0A003FEC67 /* TimelineTableViewCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TimelineTableViewCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +98,6 @@
 				83D3611622EF001400A105BD /* TimelineTableViewCell.xib */,
 				AAC049AC1DB89002003FEC67 /* TimelinePoint.swift */,
 				AAE17F0B1DBA66D000A1C450 /* Timeline.swift */,
-				4CCB40A3242DD2C500BE1CFF /* SwipeTypes.swift */,
 				4CCB40A5242DD72200BE1CFF /* SwipeableCellActionsView.swift */,
 				AAC0498D1DB88F0A003FEC67 /* Info.plist */,
 			);
@@ -239,7 +236,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CCB40A6242DD72200BE1CFF /* SwipeableCellActionsView.swift in Sources */,
-				4CCB40A4242DD2C500BE1CFF /* SwipeTypes.swift in Sources */,
 				AAE17F0C1DBA66D000A1C450 /* Timeline.swift in Sources */,
 				AAC049AB1DB88F38003FEC67 /* TimelineTableViewCell.swift in Sources */,
 				AAC049AD1DB89002003FEC67 /* TimelinePoint.swift in Sources */,
